@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* base styles */
+body {
+  margin: 0px;
+  background-color: #1c1c1c;
+}
+
+a {
+  color: #000000 !important;
+}
+
+@font-face {
+  font-family: "Zpix";
+  src: url("./assets/fonts/zpix.ttf") format("truetype");
+}
+
+@media (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  .nes-btn {
+    border-image-repeat: stretch;
+  }
+}
+
+
+* {
+  font-family: "Zpix", "Press Start 2P", monospace !important;
+}
+
+.App {
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr minmax(600px, 800px) 1fr;
+  grid-template-areas: 
+    "navbar navbar navbar"
+    ". content .";
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* narbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  grid-area: navbar;
+  background-color: #003aa5;
+  display: grid;
+  padding: 0.5rem;
+  grid-template-columns: 1fr minmax(600px, 800px) 1fr;
+  grid-template-areas: 
+    ". navbar-core .";
+}
+
+.navbar-core {
+  grid-area: navbar-core;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  grid-area: content;
+  margin-top: 20px;
+}
+
+.navbar h1 {
+  color: #f1356d;
+}
+.navbar .links {
+  margin-left: auto;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+.navbar button {
+  margin-left: 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: #f1356d;
+}
+
+
+/* blog previews */
+.blog-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+}
+
+.blog-preview:hover {
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+
+.blog-preview h2 {
+  font-size: 20px;;
+  margin-bottom: 8px;
+}
+
+.blog-preview a {
+  text-decoration: none !important;
+}
+
+/* blog details */
+.blog-details h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 10px;
+}
+
+.blog-details div {
+  margin: 20px 0;
+}
+
+.blog-details button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+/* create new blog form */
+
+.create label {
+  text-align: left;
+  display: block;
+}
+.create h2 {
+  margin-bottom: 30px;
+}
+
+.create .create-input-group {
+  margin-bottom: 20px;
+}
+
+.container {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    margin: 0 auto;
+
+    * {
+        font-family: inherit !important;
+    }
+}
+
+/* Login page */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding-top: 15vh;
+}
+
+.login .login-input-field {
+  margin-bottom: 20px;
+}

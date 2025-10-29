@@ -1,0 +1,68 @@
+# -----------------------
+# Global / System ignores
+# -----------------------
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+.env
+.env.*
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# -----------------------
+# Python backend ignores
+# -----------------------
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/.coverage
+backend/htmlcov/
+backend/instance/
+backend/.venv/
+backend/.env
+backend/.vscode/
+backend/.idea/
+
+# -----------------------
+# Node / React frontend ignores
+# -----------------------
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.env
+frontend/.env.*
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.vscode/
+frontend/.idea/
+
+# -----------------------
+# Docker & Compose
+# -----------------------
+*.pid
+*.sock
+*.tar
+db_data/
+volumes/
+docker-compose.override.yml
+
+# -----------------------
+# IDE / Editor configs
+# -----------------------
+.vscode/
+.idea/
+
+# -----------------------
+# OS-specific junk
+# -----------------------
+ehthumbs.db
+Icon?
+desktop.ini
