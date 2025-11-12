@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3838:3838"
+    environment:
+      - SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://wzpblog:wzpdev@db:5432/wzpdev
+      - SECRET_KEY=ilovewow
+      - JWT_SECRET_KEY=iloveff14
+      # remove this in production
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=wzpblog
+      - POSTGRES_PASSWORD=wzpdev
+      - POSTGRES_DB=wzpdev
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wzpblog -d wzpdev"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+      # todo need one more to make it complete - frontend
+
+volumes:
+  db_data:

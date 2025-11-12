@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  backend:
+    build: ./backend
+    container_name: blog_backend
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/mydb
+    depends_on:
+      - db
+    env_file:
+      - .backend_env
+
+  db:
+    image: postgres:15
+    container_name: blog_db
+    env_file:
+      - .db_env
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+      # todo need one more to make it complete - frontend
+
+volumes:
+  db_data:
+

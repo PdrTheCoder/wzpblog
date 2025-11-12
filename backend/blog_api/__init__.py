@@ -15,18 +15,25 @@ def create_app():
     app = Flask(__name__, instance_relative_config=True)
     app.url_map.strict_slashes = False
 
-    # load system env & load config
-    flask_env = os.environ.get('FLASK_ENV', 'development')
-    if flask_env == 'development' :
-        cfg = import_string('blog_api.config.DevelopmentConfig')()
-    elif flask_env == 'testing':
-        # TODO
-        cfg = import_string('blog_api.config.TestingConfig')()
-    elif flask_env == 'production':
-        # TODO
-        cfg = import_string('blog_api.config.ProductionConfig')()
-    else:
+    # load cfg variables from env
+    app.config['SECRET_KEY'] = os.environ.get(
+        'SECRET_KEY',
+        'bro_forgot_set_secret_key_dammmmn'
+    )
+
+    app.config['JWT_SECRET_KEY'] = os.environ.get(
+        'JWT_SECRET_KEY',
+        'bro_forgot_set_jwt_secret_key_dammmmn'
+    )
+    
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
+    
+    if not app.config['SQLALCHEMY_DATABASE_URI']:
         exit(1)
+
+
+    # load from object
+    cfg = import_string('blog_api.config.Config')()
     app.config.from_object(cfg)
 
     # jwt part
