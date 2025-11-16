@@ -4,13 +4,15 @@ import MDEditor from '@uiw/react-md-editor';
 import useFetch from "./useFetch";
 import useFetchPost from "./useFetchPost";
 
+const api = process.env.REACT_APP_API_URL;
+
 const Create = () => {
     const history = useHistory();
 
     const [title, setTitle] = useState('');
     const [value, setValue] = useState();
     const [category, setCategory] = useState("");
-    const { data: categories, isCtgPending, ctgError } = useFetch('http://127.0.0.1:5000/api/categories');
+    const { data: categories, isCtgPending, ctgError } = useFetch(`${api}/api/categories`);
     const { postData, resData, error, isPending } = useFetchPost();
 
     const handleTitleChange = (e) => {
@@ -31,7 +33,7 @@ const Create = () => {
         e.preventDefault();
         const blog = { title, body: value, category_id: category };
         postData(
-            'http://127.0.0.1:5000/api/blogs', blog
+            `${api}/api/blogs`, blog
         ).then((res) => {
             if (res && res.code === 0) {
                 history.push("/");

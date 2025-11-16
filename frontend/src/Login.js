@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import useFetchPost from "./useFetchPost";
 
+const api = process.env.REACT_APP_API_URL;
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -16,7 +17,7 @@ const Login = () => {
         e.preventDefault();
         const credential = { username, password };
         postData(
-            'http://127.0.0.1:5000/auth/login', credential
+            `${api}/auth/login`, credential
         ).then((res) => {
             if (res && res.code === 0) {
                 console.log(res);

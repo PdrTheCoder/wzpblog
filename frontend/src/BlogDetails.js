@@ -2,16 +2,18 @@ import { useParams, useHistory } from "react-router-dom";
 import useFetch from "./useFetch";
 import Markdown from 'markdown-to-jsx';
 
+const api = process.env.REACT_APP_API_URL;
+
 const BlogDetails = () => {
     const { id } = useParams();
-    const { data: blog, isPending, error} = useFetch('http://127.0.0.1:5000/api/blogs/' + id);
+    const { data: blog, isPending, error} = useFetch(`${api}/api/blogs/` + id);
     const history = useHistory();
 
     const token = localStorage.getItem("token");
 
 
     const handleClick = () => {
-        fetch('http://127.0.0.1:5000/api/blogs/' + id, {
+        fetch(`${api}/api/blogs/` + id, {
             method: 'DELETE'
         }).then(() => {
             history.push('/');

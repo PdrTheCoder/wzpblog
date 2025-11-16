@@ -1,8 +1,10 @@
 import BlogList from "./BlogList";
 import useFetch from "./useFetch";
 
+
 const Home = () => {
-    const { data: blogs, isPending, error } = useFetch('http://127.0.0.1:5000/api/blogs/');
+    const api = process.env.REACT_APP_API_URL;
+    const { data: blogs, isPending, error } = useFetch(`${api}/api/blogs/`);
 
     return (
         <div className="home">
